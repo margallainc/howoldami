@@ -7,7 +7,7 @@ import Link from 'next/link';
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://howoldami.com'),
+  metadataBase: new URL('https://secondsalive.com'),
   title: {
     default: 'How Old Am I? — Exact Age Calculator with Live Life Stats',
     template: '%s | How Old Am I?',

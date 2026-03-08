@@ -25,7 +25,7 @@ export default function LifeExpectancyCalculator() {
             '@type': 'WebApplication',
             name: 'Life Expectancy Calculator',
             description: 'See your life progress based on country life expectancy.',
-            url: 'https://howoldami.com/life-expectancy-calculator',
+            url: 'https://secondsalive.com/life-expectancy-calculator',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

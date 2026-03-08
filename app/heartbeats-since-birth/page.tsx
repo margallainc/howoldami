@@ -25,7 +25,7 @@ export default function HeartbeatsSinceBirth() {
             '@type': 'WebApplication',
             name: 'Heartbeat Counter Since Birth',
             description: 'Calculate how many heartbeats you have had since birth.',
-            url: 'https://howoldami.com/heartbeats-since-birth',
+            url: 'https://secondsalive.com/heartbeats-since-birth',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

@@ -117,7 +117,7 @@ export default function ShareCard({ birthDate }: ShareCardProps) {
     // Footer
     ctx.fillStyle = '#6366f1';
     ctx.font = '400 20px system-ui, -apple-system, sans-serif';
-    ctx.fillText('howoldami.com', 600, 590);
+    ctx.fillText('secondsalive.com', 600, 590);
 
     // Download
     const link = document.createElement('a');

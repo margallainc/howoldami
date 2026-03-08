@@ -25,7 +25,7 @@ export default function NextBirthdayCountdown() {
             '@type': 'WebApplication',
             name: 'Birthday Countdown Timer',
             description: 'Count down the days until your next birthday.',
-            url: 'https://howoldami.com/next-birthday-countdown',
+            url: 'https://secondsalive.com/next-birthday-countdown',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

@@ -25,7 +25,7 @@ export default function SecondsOldCalculator() {
             '@type': 'WebApplication',
             name: 'Seconds Old Calculator',
             description: 'Calculate how many seconds old you are.',
-            url: 'https://howoldami.com/seconds-old-calculator',
+            url: 'https://secondsalive.com/seconds-old-calculator',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

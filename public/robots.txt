@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://howoldami.com/sitemap.xml
+Sitemap: https://secondsalive.com/sitemap.xml

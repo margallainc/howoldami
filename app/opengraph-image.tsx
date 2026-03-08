@@ -101,7 +101,7 @@ export default async function Image() {
             display: 'flex',
           }}
         >
-          howoldami.com
+          secondsalive.com
         </div>
       </div>
     ),

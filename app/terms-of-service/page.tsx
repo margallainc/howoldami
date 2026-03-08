@@ -25,7 +25,7 @@ export default function TermsOfServicePage() {
           </h2>
           <p>
             By accessing and using How Old Am I? (the &quot;Site&quot;), available at
-            howoldami.com, you agree to be bound by these Terms of Service
+            secondsalive.com, you agree to be bound by these Terms of Service
             (&quot;Terms&quot;). If you do not agree to these Terms, please do not use the Site.
           </p>
         </section>
@@ -229,10 +229,10 @@ export default function TermsOfServicePage() {
           <p>
             <strong>Email:</strong>{' '}
             <a
-              href="mailto:legal@howoldami.com"
+              href="mailto:legal@secondsalive.com"
               className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 underline"
             >
-              legal@howoldami.com
+              legal@secondsalive.com
             </a>
           </p>
         </section> */}

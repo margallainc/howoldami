@@ -25,7 +25,7 @@ export default function DaysOldCalculator() {
             '@type': 'WebApplication',
             name: 'Days Old Calculator',
             description: 'Calculate how many days old you are.',
-            url: 'https://howoldami.com/days-old-calculator',
+            url: 'https://secondsalive.com/days-old-calculator',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

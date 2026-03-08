@@ -25,7 +25,7 @@ export default function AgeInDays() {
             '@type': 'WebApplication',
             name: 'Age in Days Calculator',
             description: 'Calculate your exact age in days.',
-            url: 'https://howoldami.com/age-in-days',
+            url: 'https://secondsalive.com/age-in-days',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

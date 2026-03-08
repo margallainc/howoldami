@@ -25,7 +25,7 @@ export default function WhatDayWasIBorn() {
             '@type': 'WebApplication',
             name: 'Birth Day of Week Finder',
             description: 'Find out what day of the week you were born on.',
-            url: 'https://howoldami.com/what-day-was-i-born',
+            url: 'https://secondsalive.com/what-day-was-i-born',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

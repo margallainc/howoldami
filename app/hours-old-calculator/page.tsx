@@ -25,7 +25,7 @@ export default function HoursOldCalculator() {
             '@type': 'WebApplication',
             name: 'Hours Old Calculator',
             description: 'Calculate how many hours old you are.',
-            url: 'https://howoldami.com/hours-old-calculator',
+            url: 'https://secondsalive.com/hours-old-calculator',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

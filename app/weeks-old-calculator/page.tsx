@@ -25,7 +25,7 @@ export default function WeeksOldCalculator() {
             '@type': 'WebApplication',
             name: 'Weeks Old Calculator',
             description: 'Calculate how many weeks old you are.',
-            url: 'https://howoldami.com/weeks-old-calculator',
+            url: 'https://secondsalive.com/weeks-old-calculator',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

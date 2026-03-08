@@ -12,7 +12,7 @@ export default function Home() {
             name: 'How Old Am I? — Exact Age Calculator',
             description:
               'Find out exactly how old you are in years, months, days, hours, minutes and seconds. See your life stats counting live.',
-            url: 'https://howoldami.com',
+            url: 'https://secondsalive.com',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
             offers: {

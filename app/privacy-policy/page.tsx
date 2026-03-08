@@ -26,7 +26,7 @@ export default function PrivacyPolicyPage() {
           <p>
             How Old Am I? (&quot;we,&quot; &quot;our,&quot; or &quot;the Site&quot;) respects your
             privacy and is committed to protecting any information that may be collected while you
-            use our website at howoldami.com. This Privacy Policy explains what data we collect, how
+            use our website at secondsalive.com. This Privacy Policy explains what data we collect, how
             we use it, and your choices regarding that data.
           </p>
         </section>
@@ -215,10 +215,10 @@ export default function PrivacyPolicyPage() {
           <p>
             <strong>Email:</strong>{' '}
             <a
-              href="mailto:privacy@howoldami.com"
+              href="mailto:privacy@secondsalive.com"
               className="text-indigo-500 hover:text-indigo-600 dark:text-indigo-400 dark:hover:text-indigo-300 underline"
             >
-              privacy@howoldami.com
+              privacy@secondsalive.com
             </a>
           </p>
         </section> */}
