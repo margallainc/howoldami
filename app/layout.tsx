@@ -45,9 +45,7 @@ export default function RootLayout({
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?
-        client=ca-pub-3426561171885671"
-          crossOrigin="anonymous"></script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3426561171885671"crossOrigin="anonymous"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
