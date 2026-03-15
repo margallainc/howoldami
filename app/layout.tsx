@@ -89,6 +89,12 @@ export default function RootLayout({
             </Link>
             <div className="flex items-center gap-4">
               <Link
+                href="/blog"
+                className="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors hidden sm:block"
+              >
+                Blog
+              </Link>
+              <Link
                 href="/about"
                 className="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors hidden sm:block"
               >
@@ -131,9 +137,23 @@ export default function RootLayout({
               </div>
               <div className="col-span-2 sm:col-span-1">
                 <h4 className="font-semibold text-sm text-slate-900 dark:text-white mb-3">
-                  Company
+                  Blog
                 </h4>
                 <ul className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
+                  <li><Link href="/blog/what-generation-am-i" className="hover:text-indigo-500 transition-colors">What Generation Am I?</Link></li>
+                  <li><Link href="/blog/life-expectancy-by-country" className="hover:text-indigo-500 transition-colors">Life Expectancy by Country</Link></li>
+                  <li><Link href="/blog/milestone-birthdays" className="hover:text-indigo-500 transition-colors">Milestone Birthdays</Link></li>
+                  <li><Link href="/blog/birthday-facts-and-statistics" className="hover:text-indigo-500 transition-colors">Birthday Facts & Statistics</Link></li>
+                  <li><Link href="/blog" className="hover:text-indigo-500 transition-colors font-medium">View All Articles →</Link></li>
+                </ul>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-8">
+              <div className="col-span-2 sm:col-span-3">
+                <h4 className="font-semibold text-sm text-slate-900 dark:text-white mb-3">
+                  Company
+                </h4>
+                <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-500 dark:text-slate-400">
                   <li><Link href="/about" className="hover:text-indigo-500 transition-colors">How It Works</Link></li>
                   <li><Link href="/privacy-policy" className="hover:text-indigo-500 transition-colors">Privacy Policy</Link></li>
                   <li><Link href="/terms-of-service" className="hover:text-indigo-500 transition-colors">Terms of Service</Link></li>
