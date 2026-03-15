@@ -237,7 +237,7 @@ export default function WhatGenerationAmI() {
           What Shapes a Generation&apos;s Character
         </h2>
         <p>
-          Researchers identify a few core factors that define a generation's character:
+          Researchers identify a few core factors that define a generation&apos;s character:
         </p>
         <ul className="space-y-3 my-4">
           <li className="flex gap-3">
