@@ -125,13 +125,13 @@ export default function HeartbeatsInALifetime() {
         </p>
         <div className="not-prose bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl p-5 my-4 font-mono text-sm">
           <div className="space-y-2 text-slate-600 dark:text-slate-400">
-            <div><span className="text-slate-400 dark:text-slate-500">// Average resting heart rate</span></div>
+            <div><span className="text-slate-400 dark:text-slate-500">{"// Average resting heart rate"}</span></div>
             <div className="text-slate-900 dark:text-white">70 beats/minute</div>
-            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">// Per day</span></div>
+            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">{"// Per day"}</span></div>
             <div className="text-slate-900 dark:text-white">70 × 60 × 24 = <strong>100,800 beats/day</strong></div>
-            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">// Per year</span></div>
+            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">{"// Per year"}</span></div>
             <div className="text-slate-900 dark:text-white">100,800 × 365.25 = <strong>~36.8 million beats/year</strong></div>
-            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">// Over 70 years</span></div>
+            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">{"// Over 70 years"}</span></div>
             <div className="text-slate-900 dark:text-white">36.8M × 70 = <strong>~2.57 billion total beats</strong></div>
           </div>
         </div>
@@ -173,10 +173,10 @@ export default function HeartbeatsInALifetime() {
           Do Animals Have a "Heartbeat Budget"?
         </h2>
         <p>
-          One of the most fascinating observations in biology is the consistency of lifetime heartbeats across mammalian species. A mouse lives about 2–3 years with a heart rate of 500–600 bpm. An elephant lives 60–70 years with a heart rate of 25–35 bpm. Both clock roughly 1–1.5 billion heartbeats over their lifespans.
+          One of the most fascinating observations in biology is the consistency of lifetime heartbeats across mammalian species. A mouse lives about 2&ndash;3 years with a heart rate of 500&ndash;600 bpm. An elephant lives 60&ndash;70 years with a heart rate of 25&ndash;35 bpm. Both clock roughly 1&ndash;1.5 billion heartbeats over their lifespans.
         </p>
         <p>
-          This observation led to the popular idea of a "lifetime heartbeat budget" — that each animal gets a fixed number of beats, and the faster you use them, the sooner you die. While this is a compelling pattern, it is an observation rather than a mechanism. Humans are actually a notable exception: we live far longer than the mammalian heartbeat pattern would predict, likely because of upright posture, cognitive complexity, social behavior, and our accumulated medical knowledge.
+          This observation led to the popular idea of a &quot;lifetime heartbeat budget&quot; &mdash; that each animal gets a fixed number of beats, and the faster you use them, the sooner you die. While this is a compelling pattern, it is an observation rather than a mechanism. Humans are actually a notable exception: we live far longer than the mammalian heartbeat pattern would predict, likely because of upright posture, cognitive complexity, social behavior, and our accumulated medical knowledge.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">

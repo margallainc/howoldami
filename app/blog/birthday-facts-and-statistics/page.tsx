@@ -251,10 +251,10 @@ export default function BirthdayFactsAndStatistics() {
           The Birthday Paradox Explained
         </h2>
         <p>
-          The Birthday Problem (Fact #4 above) is worth dwelling on because it is one of the most counterintuitive results in all of probability theory. When most people hear "how many people do you need in a room to have a 50% chance of two sharing a birthday?" they guess somewhere around 180 (half of 365). The actual answer — 23 — shocks almost everyone.
+          The Birthday Problem (Fact #4 above) is worth dwelling on because it is one of the most counterintuitive results in all of probability theory. When most people hear &quot;how many people do you need in a room to have a 50% chance of two sharing a birthday?&quot; they guess somewhere around 180 (half of 365). The actual answer &mdash; 23 &mdash; shocks almost everyone.
         </p>
         <p>
-          The reason is that when you have 23 people in a room, you are not comparing one person's birthday against 22 others. You are comparing every possible pair: that is 23 × 22 ÷ 2 = 253 different pairs. With 253 pairs each having a chance of matching, the cumulative probability climbs quickly to just over 50%. It is a beautiful demonstration of how combinatorial thinking works — and how poorly our intuition handles it.
+          The reason is that when you have 23 people in a room, you are not comparing one person&apos;s birthday against 22 others. You are comparing every possible pair: that is 23 &times; 22 &divide; 2 = 253 different pairs. With 253 pairs each having a chance of matching, the cumulative probability climbs quickly to just over 50%. It is a beautiful demonstration of how combinatorial thinking works &mdash; and how poorly our intuition handles it.
         </p>
 
         <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl p-6 mt-10">

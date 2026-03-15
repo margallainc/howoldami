@@ -100,7 +100,7 @@ export default function HowToCalculateExactAge() {
       <div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-slate-600 dark:text-slate-400">
 
         <p className="text-lg leading-relaxed">
-          Most people know their age in years. Fewer know it in months. Almost no one knows it in days — and yet that number is often the most striking. A 30-year-old has lived approximately 10,950 days. A 50-year-old, around 18,250. These numbers carry a different kind of weight than "30" or "50," and calculating them precisely is more interesting than it first appears.
+          Most people know their age in years. Fewer know it in months. Almost no one knows it in days &mdash; and yet that number is often the most striking. A 30-year-old has lived approximately 10,950 days. A 50-year-old, around 18,250. These numbers carry a different kind of weight than &quot;30&quot; or &quot;50,&quot; and calculating them precisely is more interesting than it first appears.
         </p>
 
         <div className="bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-200 dark:border-indigo-800 rounded-xl p-5 my-8">
@@ -173,14 +173,14 @@ export default function HowToCalculateExactAge() {
         </p>
         <div className="not-prose bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl p-5 my-4 font-mono text-sm">
           <div className="space-y-2 text-slate-600 dark:text-slate-400">
-            <div><span className="text-slate-400 dark:text-slate-500">// Step 1: Convert both dates to milliseconds since Unix epoch</span></div>
+            <div><span className="text-slate-400 dark:text-slate-500">{"// Step 1: Convert both dates to milliseconds since Unix epoch"}</span></div>
             <div className="text-slate-900 dark:text-white">today_ms = Date.now()</div>
             <div className="text-slate-900 dark:text-white">birthdate_ms = new Date(birthdate).getTime()</div>
-            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">// Step 2: Get the difference in milliseconds</span></div>
+            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">{"// Step 2: Get the difference in milliseconds"}</span></div>
             <div className="text-slate-900 dark:text-white">diff_ms = today_ms - birthdate_ms</div>
-            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">// Step 3: Convert to days</span></div>
-            <div className="text-slate-900 dark:text-white">days_old = Math.floor(diff_ms / (1000 × 60 × 60 × 24))</div>
-            <div className="mt-3 text-xs text-slate-400 dark:text-slate-500">// Leap years are automatically handled since we use actual calendar milliseconds</div>
+            <div className="mt-3"><span className="text-slate-400 dark:text-slate-500">{"// Step 3: Convert to days"}</span></div>
+            <div className="text-slate-900 dark:text-white">days_old = Math.floor(diff_ms / (1000 &times; 60 &times; 60 &times; 24))</div>
+            <div className="mt-3 text-xs text-slate-400 dark:text-slate-500">{"// Leap years are automatically handled since we use actual calendar milliseconds"}</div>
           </div>
         </div>
         <p>
@@ -191,10 +191,10 @@ export default function HowToCalculateExactAge() {
           The Leap Year Problem
         </h2>
         <p>
-          Leap years affect age calculation in two ways. For total-days calculation, they are automatically included when you use the millisecond method. For year-based calculation, the question of whether 2025 is a leap year (it is not) or 2024 was (it was) affects the exact number of days in "one year" — which is why "multiply years by 365" gives slightly wrong answers over long periods.
+          Leap years affect age calculation in two ways. For total-days calculation, they are automatically included when you use the millisecond method. For year-based calculation, the question of whether 2025 is a leap year (it is not) or 2024 was (it was) affects the exact number of days in &quot;one year&quot; &mdash; which is why &quot;multiply years by 365&quot; gives slightly wrong answers over long periods.
         </p>
         <p>
-          The deeper quirk: people born on February 29th technically only have a matching calendar date in leap years. Software handling this edge case usually assigns March 1st as their birthday in non-leap years, which means in practice they age "normally" — but some systems get this wrong.
+          The deeper quirk: people born on February 29th technically only have a matching calendar date in leap years. Software handling this edge case usually assigns March 1st as their birthday in non-leap years, which means in practice they age &quot;normally&quot; &mdash; but some systems get this wrong.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">
@@ -260,7 +260,7 @@ export default function HowToCalculateExactAge() {
           </li>
           <li className="flex gap-3">
             <span className="mt-1.5 w-2 h-2 rounded-full bg-indigo-400 flex-shrink-0"></span>
-            <div><strong className="text-slate-900 dark:text-white">Seconds</strong> are the most visceral unit. Watching your second count tick upward in real time — crossing a billion seconds at around age 31 — makes time feel both fast and precious in a way that "turning 31" does not.</div>
+            <div><strong className="text-slate-900 dark:text-white">Seconds</strong> are the most visceral unit. Watching your second count tick upward in real time &mdash; crossing a billion seconds at around age 31 &mdash; makes time feel both fast and precious in a way that &quot;turning 31&quot; does not.</div>
           </li>
         </ul>
 

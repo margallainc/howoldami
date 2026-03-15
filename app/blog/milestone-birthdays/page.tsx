@@ -224,7 +224,7 @@ export default function MilestoneBirthdays() {
           The Happiness Curve: Why Life Gets Better
         </h2>
         <p>
-          Here is the finding that surprises most people: happiness research consistently shows that humans follow a U-curve through their lives. Wellbeing is highest in youth, dips to its lowest point in the mid-40s (the "trough"), then climbs steadily from 50 onward, reaching its highest sustained levels in the 60s and 70s.
+          Here is the finding that surprises most people: happiness research consistently shows that humans follow a U-curve through their lives. Wellbeing is highest in youth, dips to its lowest point in the mid-40s (the &quot;trough&quot;), then climbs steadily from 50 onward, reaching its highest sustained levels in the 60s and 70s.
         </p>
         <p>
           This pattern has been found in data from over 72 countries across multiple independent research teams. The exact cause is debated — it may relate to declining expectations, increasing acceptance, growing social skill, or some combination — but the trend is robust. If you are dreading your 40s, the evidence says you are dreading the last rough patch before a long, sustained improvement.

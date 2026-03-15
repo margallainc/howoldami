@@ -220,21 +220,21 @@ export default function WhatGenerationAmI() {
           Why the Boundaries Are Fuzzy
         </h2>
         <p>
-          No one is born with a generational label stamped on them. The Pew Research Center, which is generally considered the most authoritative source on generation definitions, draws the Millennial/Gen Z cutoff at 1996. But the U.S. Census Bureau has used 1982 as the Millennial start date, and demographers William Strauss and Neil Howe — who coined the term "Millennial" — placed the start at 1982 as well.
+          No one is born with a generational label stamped on them. The Pew Research Center, which is generally considered the most authoritative source on generation definitions, draws the Millennial/Gen Z cutoff at 1996. But the U.S. Census Bureau has used 1982 as the Millennial start date, and demographers William Strauss and Neil Howe &mdash; who coined the term &quot;Millennial&quot; &mdash; placed the start at 1982 as well.
         </p>
         <p>
           What matters more than the exact year is the formative experience. Someone born in 1980 and someone born in 1965 are both technically Gen X, but they had meaningfully different childhoods. The generation concept works best as a rough cultural guide, not a rigid identity box.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">
-          The "Zillennial" Micro-Generation
+          The &quot;Zillennial&quot; Micro-Generation
         </h2>
         <p>
-          If you were born between roughly 1993 and 1998, you may find that neither "Millennial" nor "Gen Z" fully captures your experience. You likely had a childhood without smartphones but adopted them as a teenager. You remember MySpace and Facebook launching, but also grew up on Instagram and Snapchat. This micro-generation — sometimes called Zillennials or the Oregon Trail Generation — straddles the cultural divide in a way the broader categories miss.
+          If you were born between roughly 1993 and 1998, you may find that neither &quot;Millennial&quot; nor &quot;Gen Z&quot; fully captures your experience. You likely had a childhood without smartphones but adopted them as a teenager. You remember MySpace and Facebook launching, but also grew up on Instagram and Snapchat. This micro-generation &mdash; sometimes called Zillennials or the Oregon Trail Generation &mdash; straddles the cultural divide in a way the broader categories miss.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white mt-10">
-          What Shapes a Generation
+          What Shapes a Generation&apos;s Character
         </h2>
         <p>
           Researchers identify a few core factors that define a generation's character:

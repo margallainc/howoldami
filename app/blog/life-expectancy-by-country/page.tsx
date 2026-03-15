@@ -137,7 +137,7 @@ export default function LifeExpectancyByCountry() {
         <div className="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-xl p-5 my-8">
           <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-400 mb-2">See your personal life progress</p>
           <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
-            Our life expectancy calculator shows you a visual progress bar based on your country's average — and counts your exact age live, down to the second.
+            Our life expectancy calculator shows you a visual progress bar based on your country&apos;s average &mdash; and counts your exact age live, down to the second.
           </p>
           <Link
             href="/life-expectancy-calculator"
@@ -187,7 +187,7 @@ export default function LifeExpectancyByCountry() {
         <ul className="space-y-3 my-4">
           <li className="flex gap-3">
             <span className="mt-1.5 w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
-            <div><strong className="text-slate-900 dark:text-white">Diet.</strong> The traditional Japanese diet is rich in fish, seaweed, vegetables, tofu, and fermented foods. It is low in saturated fat, high in omega-3 fatty acids, and calorie-moderate. The concept of <em>hara hachi bū</em> — eating until 80% full — is culturally embedded, particularly in Okinawa, Japan's longest-lived prefecture.</div>
+            <div><strong className="text-slate-900 dark:text-white">Diet.</strong> The traditional Japanese diet is rich in fish, seaweed, vegetables, tofu, and fermented foods. It is low in saturated fat, high in omega-3 fatty acids, and calorie-moderate. The concept of <em>hara hachi b&uuml;</em> &mdash; eating until 80% full &mdash; is culturally embedded, particularly in Okinawa, Japan&apos;s longest-lived prefecture.</div>
           </li>
           <li className="flex gap-3">
             <span className="mt-1.5 w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
@@ -270,7 +270,7 @@ export default function LifeExpectancyByCountry() {
         <div className="bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl p-6 mt-10">
           <h3 className="font-semibold text-slate-900 dark:text-white mb-2">See Your Life Progress</h3>
           <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-            Use our life expectancy calculator to see a visual progress bar based on your country's average lifespan — and your exact age counting live.
+            Use our life expectancy calculator to see a visual progress bar based on your country&apos;s average lifespan &mdash; and your exact age counting live.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/life-expectancy-calculator" className="text-sm font-semibold text-white bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded-lg transition-colors">
