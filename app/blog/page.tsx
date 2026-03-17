@@ -16,6 +16,38 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'zodiac-sign-by-birthday',
+    title: 'Zodiac Sign by Birthday: Every Sign, Every Date',
+    description:
+      'Find your zodiac sign by birthday — exact date ranges for all 12 signs, their personality traits, ruling planets, compatible signs, and the history of Western astrology.',
+    category: 'Astrology',
+    readTime: '12 min read',
+  },
+  {
+    slug: 'birth-month-personality',
+    title: 'What Your Birth Month Says About You — Science & Personality',
+    description:
+      'What does your birth month say about your personality, health, and life outcomes? The real science behind birth month effects — from the relative age effect to vitamin D and career patterns.',
+    category: 'Birthdays',
+    readTime: '10 min read',
+  },
+  {
+    slug: 'how-many-weeks-pregnant-am-i',
+    title: 'How Many Weeks Pregnant Am I? Pregnancy Weeks Explained',
+    description:
+      'How to calculate how many weeks pregnant you are, what happens in each trimester, key milestones from week 4 to 40, and why doctors count from your last period.',
+    category: 'Pregnancy',
+    readTime: '11 min read',
+  },
+  {
+    slug: 'dog-years-to-human-years',
+    title: 'Dog Years to Human Years: Accurate Conversion Charts by Breed Size',
+    description:
+      'The real dog-to-human age conversion chart — adjusted for breed size. Why the multiply-by-7 rule is wrong, how dogs actually age, and average lifespans by size.',
+    category: 'Pets',
+    readTime: '9 min read',
+  },
+  {
     slug: 'what-generation-am-i',
     title: 'What Generation Am I? Complete Guide to Every Generation',
     description:
@@ -66,6 +98,9 @@ const articles = [
 ];
 
 const categoryColors: Record<string, string> = {
+  Astrology: 'bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400',
+  Pregnancy: 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400',
+  Pets: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
   Generations: 'bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400',
   'Life Stats': 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
   Birthdays: 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400',
