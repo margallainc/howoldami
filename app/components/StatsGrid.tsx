@@ -8,33 +8,25 @@ interface StatsGridProps {
   highlightStat?: keyof LifeStats;
 }
 
-interface StatCardProps {
+interface StatRowProps {
   label: string;
   value: string;
   highlight?: boolean;
 }
 
-function StatCard({ label, value, highlight }: StatCardProps) {
+function StatRow({ label, value, highlight }: StatRowProps) {
   return (
-    <div
-      className={`rounded-xl p-4 sm:p-6 transition-all duration-300 ${
-        highlight
-          ? 'bg-indigo-500/20 dark:bg-indigo-500/30 ring-2 ring-indigo-500/50 scale-105'
-          : 'bg-slate-100 dark:bg-slate-800/50'
-      }`}
-    >
-      <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1">
+    <div className="flex items-baseline justify-between py-3.5 border-b border-[var(--border)]">
+      <span className={`text-sm tracking-wide ${highlight ? 'text-[var(--gold)]' : 'text-[var(--muted)]'}`}>
         {label}
-      </p>
-      <p
-        className={`text-lg sm:text-2xl font-bold tabular-nums ${
-          highlight
-            ? 'text-indigo-600 dark:text-indigo-300'
-            : 'text-slate-900 dark:text-white'
+      </span>
+      <span
+        className={`font-display tabular-nums text-lg sm:text-xl ${
+          highlight ? 'text-[var(--gold)]' : 'text-[var(--text)]'
         }`}
       >
         {value}
-      </p>
+      </span>
     </div>
   );
 }
@@ -55,45 +47,15 @@ export default function StatsGrid({ birthDate, highlightStat }: StatsGridProps) 
   }, [update]);
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-      <StatCard
-        label="Days Alive"
-        value={formatNumber(stats.totalDays)}
-        highlight={highlightStat === 'totalDays'}
-      />
-      <StatCard
-        label="Hours Alive"
-        value={formatNumber(stats.totalHours)}
-        highlight={highlightStat === 'totalHours'}
-      />
-      <StatCard
-        label="Minutes Alive"
-        value={formatNumber(stats.totalMinutes)}
-        highlight={highlightStat === 'totalMinutes'}
-      />
-      <StatCard
-        label="Seconds Alive"
-        value={formatNumber(stats.totalSeconds)}
-        highlight={highlightStat === 'totalSeconds'}
-      />
-      <StatCard
-        label="Heartbeats"
-        value={formatNumber(stats.heartbeats)}
-        highlight={highlightStat === 'heartbeats'}
-      />
-      <StatCard
-        label="Breaths Taken"
-        value={formatNumber(stats.breaths)}
-        highlight={highlightStat === 'breaths'}
-      />
-      <StatCard
-        label="Nights Slept"
-        value={formatNumber(stats.timesSlepped)}
-      />
-      <StatCard
-        label="Hours Slept"
-        value={formatNumber(stats.hoursSlepped)}
-      />
+    <div className="divide-y divide-[var(--border)] border-t border-[var(--border)]">
+      <StatRow label="Days lived" value={formatNumber(stats.totalDays)} highlight={highlightStat === 'totalDays'} />
+      <StatRow label="Hours lived" value={formatNumber(stats.totalHours)} highlight={highlightStat === 'totalHours'} />
+      <StatRow label="Minutes lived" value={formatNumber(stats.totalMinutes)} highlight={highlightStat === 'totalMinutes'} />
+      <StatRow label="Seconds lived" value={formatNumber(stats.totalSeconds)} highlight={highlightStat === 'totalSeconds'} />
+      <StatRow label="Heartbeats" value={formatNumber(stats.heartbeats)} highlight={highlightStat === 'heartbeats'} />
+      <StatRow label="Breaths drawn" value={formatNumber(stats.breaths)} highlight={highlightStat === 'breaths'} />
+      <StatRow label="Nights slept" value={formatNumber(stats.timesSlepped)} />
+      <StatRow label="Hours slept" value={formatNumber(stats.hoursSlepped)} />
     </div>
   );
 }

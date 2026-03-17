@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import {
   getDayOfWeekBorn,
   getNextBirthday,
@@ -23,24 +23,57 @@ interface AgeCalculatorProps {
 export default function AgeCalculator({ highlightStat, focusCountry }: AgeCalculatorProps) {
   const [birthDate, setBirthDate] = useState<Date | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [inputValue, setInputValue] = useState('');
 
-  const handleDateChange = useCallback((value: string) => {
-    setInputValue(value);
-    if (!value) {
+  // Three-field date state
+  const [day, setDay] = useState('');
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
+
+  const monthRef = useRef<HTMLInputElement>(null);
+  const yearRef = useRef<HTMLInputElement>(null);
+
+  // Assemble date when all three fields have values
+  useEffect(() => {
+    if (day && month && year && year.length === 4) {
+      const dd = day.padStart(2, '0');
+      const mm = month.padStart(2, '0');
+      const dateStr = `${year}-${mm}-${dd}`;
+      const date = new Date(dateStr + 'T00:00:00');
+      const validation = isValidBirthDate(date);
+      if (!validation.valid) {
+        setError(validation.error || 'Invalid date');
+        setBirthDate(null);
+      } else {
+        setError(null);
+        setBirthDate(date);
+      }
+    } else if (!day && !month && !year) {
       setBirthDate(null);
       setError(null);
-      return;
     }
-    const date = new Date(value + 'T00:00:00');
-    const validation = isValidBirthDate(date);
-    if (!validation.valid) {
-      setError(validation.error || 'Invalid date');
-      setBirthDate(null);
-    } else {
-      setError(null);
-      setBirthDate(date);
+  }, [day, month, year]);
+
+  const handleDayChange = useCallback((v: string) => {
+    const clean = v.replace(/\D/g, '').slice(0, 2);
+    setDay(clean);
+    if (clean.length === 2) {
+      const d = parseInt(clean, 10);
+      if (d >= 1 && d <= 31) monthRef.current?.focus();
     }
+  }, []);
+
+  const handleMonthChange = useCallback((v: string) => {
+    const clean = v.replace(/\D/g, '').slice(0, 2);
+    setMonth(clean);
+    if (clean.length === 2) {
+      const m = parseInt(clean, 10);
+      if (m >= 1 && m <= 12) yearRef.current?.focus();
+    }
+  }, []);
+
+  const handleYearChange = useCallback((v: string) => {
+    const clean = v.replace(/\D/g, '').slice(0, 4);
+    setYear(clean);
   }, []);
 
   const birthYear = birthDate?.getFullYear();
@@ -50,149 +83,169 @@ export default function AgeCalculator({ highlightStat, focusCountry }: AgeCalcul
   const stats = birthDate ? calculateLifeStats(birthDate, new Date()) : null;
 
   return (
-    <div className="space-y-8 sm:space-y-12">
-      {/* Date Input */}
-      <div className="flex flex-col items-center gap-4">
-        <label
-          htmlFor="birthdate"
-          className="text-lg sm:text-xl font-medium text-slate-700 dark:text-slate-300"
-        >
-          Enter your birthday
+    <div className="space-y-16 sm:space-y-20">
+
+      {/* ── Date Input ── */}
+      <div>
+        <label className="block text-[var(--muted)] text-xs tracking-[0.3em] uppercase mb-6">
+          Date of birth
         </label>
-        <input
-          id="birthdate"
-          type="date"
-          value={inputValue}
-          onChange={(e) => handleDateChange(e.target.value)}
-          max={new Date().toISOString().split('T')[0]}
-          className="w-full max-w-xs px-6 py-4 rounded-xl bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-lg text-center focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all [color-scheme:dark]"
-        />
+        <div className="flex items-end gap-4 sm:gap-6">
+          {/* Day */}
+          <div className="flex-1 max-w-[80px]">
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              placeholder="DD"
+              value={day}
+              onChange={(e) => handleDayChange(e.target.value)}
+              maxLength={2}
+              className="date-field"
+            />
+            <span className="block text-[var(--dim)] text-xs tracking-widest uppercase mt-2 text-center">Day</span>
+          </div>
+
+          <span className="text-[var(--dim)] text-2xl mb-5 flex-shrink-0">/</span>
+
+          {/* Month */}
+          <div className="flex-1 max-w-[80px]">
+            <input
+              ref={monthRef}
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              placeholder="MM"
+              value={month}
+              onChange={(e) => handleMonthChange(e.target.value)}
+              maxLength={2}
+              className="date-field"
+            />
+            <span className="block text-[var(--dim)] text-xs tracking-widest uppercase mt-2 text-center">Month</span>
+          </div>
+
+          <span className="text-[var(--dim)] text-2xl mb-5 flex-shrink-0">/</span>
+
+          {/* Year */}
+          <div className="flex-1 max-w-[140px]">
+            <input
+              ref={yearRef}
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              placeholder="YYYY"
+              value={year}
+              onChange={(e) => handleYearChange(e.target.value)}
+              maxLength={4}
+              className="date-field"
+            />
+            <span className="block text-[var(--dim)] text-xs tracking-widest uppercase mt-2 text-center">Year</span>
+          </div>
+        </div>
+
         {error && (
-          <p className="text-red-500 dark:text-red-400 text-sm">{error}</p>
+          <p className="mt-4 text-xs text-red-400 tracking-wide">{error}</p>
         )}
       </div>
 
-      {/* Placeholder when no date entered */}
+      {/* ── Placeholder state ── */}
       {!birthDate && !error && (
-        <div className="text-center py-16 sm:py-24">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 mb-6">
-            <svg
-              className="w-10 h-10 text-indigo-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={1.5}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </div>
-          <p className="text-xl text-slate-500 dark:text-slate-400">
-            Enter your birthday above to discover your life stats
-          </p>
-          <p className="text-sm text-slate-400 dark:text-slate-500 mt-2">
-            See your exact age counting live, heartbeats, breaths, and more
+        <div className="py-12 sm:py-20 text-center">
+          <p className="text-[var(--dim)] text-sm tracking-widest uppercase">
+            — enter your birthdate above —
           </p>
         </div>
       )}
 
-      {/* Results */}
+      {/* ── Results ── */}
       {birthDate && (
         <>
           {/* Live Counter */}
-          <div className="rounded-2xl bg-gradient-to-br from-indigo-50 to-blue-50 dark:from-indigo-950/50 dark:to-slate-900 p-6 sm:p-10">
+          <section>
             <LiveCounter birthDate={birthDate} />
-          </div>
+          </section>
 
-          {/* Fun facts row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Fun facts — born on / next birthday / total weeks */}
+          <section className="grid grid-cols-1 sm:grid-cols-3 gap-px border border-[var(--border)]" style={{ background: 'var(--border)' }}>
             {dayOfWeek && (
-              <div className="rounded-xl bg-slate-100 dark:bg-slate-800/50 p-5">
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">
-                  Born on a
-                </p>
-                <p className="text-xl font-bold text-slate-900 dark:text-white">
-                  {dayOfWeek}
-                </p>
+              <div className="bg-[var(--bg)] px-5 py-5">
+                <p className="text-[var(--muted)] text-xs tracking-widest uppercase mb-1.5">Born on a</p>
+                <p className="font-display text-[var(--text)] text-xl">{dayOfWeek}</p>
               </div>
             )}
             {nextBday && (
-              <div className="rounded-xl bg-slate-100 dark:bg-slate-800/50 p-5">
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">
-                  Your {nextBday.turningAge}
-                  {getOrdinalSuffix(nextBday.turningAge)} birthday
+              <div className="bg-[var(--bg)] px-5 py-5">
+                <p className="text-[var(--muted)] text-xs tracking-widest uppercase mb-1.5">
+                  Your {nextBday.turningAge}{getOrdinalSuffix(nextBday.turningAge)} birthday
                 </p>
-                <p className="text-xl font-bold text-slate-900 dark:text-white">
-                  in {nextBday.daysUntil} days, {nextBday.hoursUntil} hrs
+                <p className="font-display text-[var(--text)] text-xl">
+                  in {nextBday.daysUntil} days
                 </p>
               </div>
             )}
             {stats && (
-              <div className="rounded-xl bg-slate-100 dark:bg-slate-800/50 p-5">
-                <p className="text-sm text-slate-500 dark:text-slate-400 mb-1">
-                  Age in weeks
-                </p>
-                <p className="text-xl font-bold text-slate-900 dark:text-white">
-                  {formatNumber(stats.totalWeeks)} weeks
+              <div className="bg-[var(--bg)] px-5 py-5">
+                <p className="text-[var(--muted)] text-xs tracking-widest uppercase mb-1.5">Age in weeks</p>
+                <p className="font-display text-[var(--text)] text-xl tabular-nums">
+                  {formatNumber(stats.totalWeeks)}
                 </p>
               </div>
             )}
-          </div>
+          </section>
 
           {/* Year event */}
           {yearEvent && (
-            <div className="rounded-xl bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border border-amber-200/50 dark:border-amber-800/30 p-5 sm:p-6">
-              <p className="text-sm font-medium text-amber-700 dark:text-amber-400 mb-2">
-                The year you were born ({birthYear})
+            <section className="border-l-2 border-[var(--gold)] pl-5 sm:pl-7">
+              <p className="text-[var(--gold)] text-xs tracking-[0.25em] uppercase mb-3">
+                The year you were born — {birthYear}
               </p>
-              <p className="text-slate-800 dark:text-slate-200">
-                <span className="font-semibold">World:</span>{' '}
-                {yearEvent.event}
+              <p className="text-[var(--text)] text-sm leading-relaxed mb-1.5">
+                <span className="text-[var(--muted)]">World — </span>{yearEvent.event}
               </p>
-              <p className="text-slate-800 dark:text-slate-200 mt-1">
-                <span className="font-semibold">Culture:</span>{' '}
-                {yearEvent.culture}
+              <p className="text-[var(--text)] text-sm leading-relaxed">
+                <span className="text-[var(--muted)]">Culture — </span>{yearEvent.culture}
               </p>
-            </div>
+            </section>
           )}
 
           {/* AD SLOT: below-calculator */}
           <div className="flex justify-center">
-            <div className="w-full max-w-[728px] h-[90px] sm:block hidden bg-slate-100 dark:bg-slate-800/30 rounded-lg flex items-center justify-center">
+            <div className="w-full max-w-[728px] h-[90px] sm:block hidden bg-[var(--surface)] flex items-center justify-center">
               {/* AD SLOT: leaderboard-desktop */}
             </div>
-            <div className="w-[320px] h-[50px] sm:hidden bg-slate-100 dark:bg-slate-800/30 rounded-lg flex items-center justify-center">
+            <div className="w-[320px] h-[50px] sm:hidden bg-[var(--surface)] flex items-center justify-center">
               {/* AD SLOT: banner-mobile */}
             </div>
           </div>
 
-          {/* Stats Grid */}
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4">
-              Your Life in Numbers
-            </h2>
+          {/* Stats */}
+          <section>
+            <p className="text-[var(--muted)] text-xs tracking-[0.3em] uppercase mb-6">
+              Your life in numbers
+            </p>
             <StatsGrid birthDate={birthDate} highlightStat={highlightStat} />
-          </div>
+          </section>
 
           {/* AD SLOT: between-stats-and-progress */}
           <div className="flex justify-center">
-            <div className="w-full max-w-[728px] h-[90px] bg-slate-100 dark:bg-slate-800/30 rounded-lg flex items-center justify-center">
+            <div className="w-full max-w-[728px] h-[90px] bg-[var(--surface)] flex items-center justify-center">
               {/* AD SLOT: mid-content */}
             </div>
           </div>
 
-          {/* Life Progress Bar */}
-          <LifeProgressBar birthDate={birthDate} focusCountry={focusCountry} />
+          {/* Life Progress */}
+          <section>
+            <LifeProgressBar birthDate={birthDate} focusCountry={focusCountry} />
+          </section>
 
-          {/* Share Card */}
-          <ShareCard birthDate={birthDate} />
+          {/* Share */}
+          <section>
+            <ShareCard birthDate={birthDate} />
+          </section>
 
-          {/* AD SLOT: bottom-of-page */}
+          {/* AD SLOT: bottom */}
           <div className="flex justify-center">
-            <div className="w-[300px] h-[250px] bg-slate-100 dark:bg-slate-800/30 rounded-lg flex items-center justify-center">
+            <div className="w-[300px] h-[250px] bg-[var(--surface)] flex items-center justify-center">
               {/* AD SLOT: bottom-rectangle */}
             </div>
           </div>

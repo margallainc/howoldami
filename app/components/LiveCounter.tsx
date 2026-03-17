@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { calculateExactAge, type AgeBreakdown } from '@/lib/calculations';
+import { calculateExactAge, calculateLifeStats, formatNumber, type AgeBreakdown } from '@/lib/calculations';
 
 interface LiveCounterProps {
   birthDate: Date;
@@ -15,9 +15,14 @@ export default function LiveCounter({ birthDate }: LiveCounterProps) {
   const [age, setAge] = useState<AgeBreakdown>(() =>
     calculateExactAge(birthDate, new Date())
   );
+  const [totalSeconds, setTotalSeconds] = useState(() =>
+    calculateLifeStats(birthDate, new Date()).totalSeconds
+  );
 
   const update = useCallback(() => {
-    setAge(calculateExactAge(birthDate, new Date()));
+    const now = new Date();
+    setAge(calculateExactAge(birthDate, now));
+    setTotalSeconds(calculateLifeStats(birthDate, now).totalSeconds);
   }, [birthDate]);
 
   useEffect(() => {
@@ -27,35 +32,61 @@ export default function LiveCounter({ birthDate }: LiveCounterProps) {
   }, [update]);
 
   return (
-    <div className="text-center">
-      <p className="text-sm uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-2">
-        Your exact age
+    <div className="animate-fade-up">
+      {/* Label */}
+      <p className="text-[var(--muted)] text-xs tracking-[0.3em] uppercase mb-6 sm:mb-8">
+        You have been alive for
       </p>
-      <div className="flex flex-wrap items-baseline justify-center gap-1 sm:gap-2">
-        <span className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white">
-          {age.years}
+
+      {/* Hero — total seconds */}
+      <div className="mb-6 sm:mb-8 overflow-hidden">
+        <span
+          className="font-display tabular-nums text-[var(--text)] leading-none block"
+          style={{ fontSize: 'clamp(3rem, 11vw, 7.5rem)' }}
+        >
+          {formatNumber(totalSeconds)}
         </span>
-        <span className="text-sm sm:text-lg text-slate-500 dark:text-slate-400 mr-2">
-          years
-        </span>
-        <span className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white">
-          {age.months}
-        </span>
-        <span className="text-sm sm:text-lg text-slate-500 dark:text-slate-400 mr-2">
-          months
-        </span>
-        <span className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white">
-          {age.days}
-        </span>
-        <span className="text-sm sm:text-lg text-slate-500 dark:text-slate-400 mr-2">
-          days
+        <span className="text-[var(--muted)] text-sm sm:text-base tracking-widest uppercase mt-1 block">
+          seconds
         </span>
       </div>
-      <div className="mt-3 font-mono text-2xl sm:text-4xl lg:text-5xl font-bold text-indigo-500 dark:text-indigo-400 tabular-nums">
-        {pad(age.hours)}:{pad(age.minutes)}:{pad(age.seconds)}
+
+      {/* Thin rule */}
+      <hr className="rule mb-6 sm:mb-8" />
+
+      {/* Years · Months · Days */}
+      <div className="flex items-baseline gap-3 sm:gap-5 mb-4 flex-wrap">
+        <div className="flex items-baseline gap-1.5">
+          <span className="font-display text-[var(--text)] tabular-nums" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}>
+            {age.years}
+          </span>
+          <span className="text-[var(--muted)] text-xs tracking-widest uppercase">years</span>
+        </div>
+        <span className="text-[var(--dim)] text-2xl leading-none">·</span>
+        <div className="flex items-baseline gap-1.5">
+          <span className="font-display text-[var(--text)] tabular-nums" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}>
+            {age.months}
+          </span>
+          <span className="text-[var(--muted)] text-xs tracking-widest uppercase">months</span>
+        </div>
+        <span className="text-[var(--dim)] text-2xl leading-none">·</span>
+        <div className="flex items-baseline gap-1.5">
+          <span className="font-display text-[var(--text)] tabular-nums" style={{ fontSize: 'clamp(1.75rem, 4vw, 3rem)' }}>
+            {age.days}
+          </span>
+          <span className="text-[var(--muted)] text-xs tracking-widest uppercase">days</span>
+        </div>
       </div>
-      <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
-        hours : minutes : seconds
+
+      {/* HH : MM : SS */}
+      <div
+        className="font-mono tabular-nums text-[var(--gold)] font-light tracking-[0.08em]"
+        style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)' }}
+      >
+        {pad(age.hours)}<span className="text-[var(--dim)] mx-1">:</span>{pad(age.minutes)}<span className="text-[var(--dim)] mx-1">:</span>{pad(age.seconds)}
+      </div>
+      <p className="text-[var(--muted)] text-xs tracking-widest uppercase mt-1.5">
+        hours · minutes · seconds
       </p>
     </div>
   );

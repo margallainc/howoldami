@@ -14,6 +14,7 @@ export default function LifeProgressBar({ birthDate, focusCountry }: LifeProgres
   const [progress, setProgress] = useState(0);
 
   const expectancy = countryLifeExpectancies[selectedCountry].expectancy;
+  const country = countryLifeExpectancies[selectedCountry].name;
 
   const update = useCallback(() => {
     setProgress(getLifeProgress(birthDate, new Date(), expectancy));
@@ -26,51 +27,37 @@ export default function LifeProgressBar({ birthDate, focusCountry }: LifeProgres
   }, [update]);
 
   return (
-    <div className="rounded-xl bg-slate-100 dark:bg-slate-800/50 p-6 sm:p-8">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-        <div>
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
-            Life Journey So Far
-          </h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            Based on average life expectancy in{' '}
-            {countryLifeExpectancies[selectedCountry].name} (
-            {expectancy} years)
-          </p>
-        </div>
+    <div>
+      {/* Header row */}
+      <div className="flex items-baseline justify-between mb-4 flex-wrap gap-3">
+        <p className="text-[var(--muted)] text-xs tracking-[0.25em] uppercase">
+          Life expectancy progress
+        </p>
         <select
           value={selectedCountry}
           onChange={(e) => setSelectedCountry(Number(e.target.value))}
-          className={`px-3 py-2 rounded-lg bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 ${
-            focusCountry ? 'ring-2 ring-indigo-500' : ''
-          }`}
+          className={`luxury-select text-[var(--text)] ${focusCountry ? 'border-[var(--gold)]' : ''}`}
         >
           {countryLifeExpectancies.map((c, i) => (
-            <option key={c.name} value={i}>
-              {c.name} ({c.expectancy} yrs)
+            <option key={c.name} value={i} style={{ background: 'var(--bg)', color: 'var(--text)' }}>
+              {c.name} — {c.expectancy} yrs
             </option>
           ))}
         </select>
       </div>
 
-      <div className="relative w-full h-6 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+      {/* Progress bar — thin, gold */}
+      <div className="w-full h-[3px] bg-[var(--border)] rounded-full overflow-hidden mb-4">
         <div
-          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-indigo-500 to-blue-400 transition-all duration-1000 ease-out"
+          className="h-full bg-[var(--gold)] transition-all duration-1000 ease-out"
           style={{ width: `${Math.min(progress, 100)}%` }}
         />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xs font-bold text-white drop-shadow-sm">
-            {progress.toFixed(2)}%
-          </span>
-        </div>
       </div>
 
-      <p className="mt-4 text-center text-slate-600 dark:text-slate-300">
-        You have lived{' '}
-        <span className="font-bold text-indigo-500 dark:text-indigo-400">
-          {progress.toFixed(2)}%
-        </span>{' '}
-        of the average life expectancy. Every moment is a gift!
+      {/* Reading */}
+      <p className="text-[var(--muted)] text-sm">
+        <span className="font-display text-[var(--text)] text-base">{progress.toFixed(2)}%</span>
+        {' '}of the average life expectancy in {country} ({expectancy} years)
       </p>
     </div>
   );

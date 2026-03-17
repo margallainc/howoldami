@@ -16,11 +16,7 @@ export default function Home() {
             url: 'https://secondsalive.com',
             applicationCategory: 'UtilityApplication',
             operatingSystem: 'Any',
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD',
-            },
+            offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
           }),
         }}
       />
@@ -84,119 +80,127 @@ export default function Home() {
         }}
       />
 
-      <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
-          How Old Am I
-          <span className="text-indigo-500">?</span>
-        </h1>
-        <p className="text-lg sm:text-xl text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
-          Discover your exact age down to the second — plus heartbeats,
-          breaths, and life milestones, all counting live.
+      {/* ── Hero ── */}
+      <section className="mb-16 sm:mb-20 pt-4 sm:pt-8">
+        <p className="text-[var(--muted)] text-xs tracking-[0.35em] uppercase mb-8 sm:mb-10">
+          Age calculator
         </p>
-      </div>
+        <h1
+          className="font-display text-[var(--text)] leading-[1.05] mb-6"
+          style={{ fontSize: 'clamp(2.5rem, 7vw, 5.5rem)' }}
+        >
+          How much time<br className="hidden sm:block" /> have you lived?
+        </h1>
+        <p className="text-[var(--muted)] text-base sm:text-lg max-w-xl leading-relaxed">
+          Enter your date of birth. Every second of your existence — counted, measured, and made visible.
+        </p>
+      </section>
 
+      {/* ── Calculator ── */}
       <AgeCalculator />
 
-      {/* More Calculators */}
-      <section className="mt-16 mb-8">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6 text-center">
-          More Age Calculators
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      {/* ── More Calculators ── */}
+      <section className="mt-24 sm:mt-28">
+        <p className="text-[var(--muted)] text-xs tracking-[0.3em] uppercase mb-8">
+          More calculators
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-px border border-[var(--border)]" style={{ background: 'var(--border)' }}>
           {[
-            { href: '/days-old-calculator', label: 'Days Old Calculator', icon: '📅' },
-            { href: '/hours-old-calculator', label: 'Hours Old Calculator', icon: '⏰' },
-            { href: '/seconds-old-calculator', label: 'Seconds Old Calculator', icon: '⚡' },
-            { href: '/weeks-old-calculator', label: 'Weeks Old Calculator', icon: '📆' },
-            { href: '/heartbeats-since-birth', label: 'Heartbeats Since Birth', icon: '❤️' },
-            { href: '/life-expectancy-calculator', label: 'Life Expectancy', icon: '🌍' },
-            { href: '/next-birthday-countdown', label: 'Birthday Countdown', icon: '🎂' },
-            { href: '/what-day-was-i-born', label: 'What Day Was I Born?', icon: '🗓️' },
-            { href: '/age-in-days', label: 'Age in Days', icon: '🔢' },
+            { href: '/days-old-calculator', label: 'Days Old' },
+            { href: '/hours-old-calculator', label: 'Hours Old' },
+            { href: '/seconds-old-calculator', label: 'Seconds Old' },
+            { href: '/weeks-old-calculator', label: 'Weeks Old' },
+            { href: '/heartbeats-since-birth', label: 'Heartbeats' },
+            { href: '/life-expectancy-calculator', label: 'Life Expectancy' },
+            { href: '/next-birthday-countdown', label: 'Birthday Countdown' },
+            { href: '/what-day-was-i-born', label: 'What Day Was I Born?' },
+            { href: '/age-in-days', label: 'Age in Days' },
           ].map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="flex items-center gap-2 p-3 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 transition-all text-sm text-slate-700 dark:text-slate-300 font-medium"
+              className="bg-[var(--bg)] px-4 py-4 text-sm text-[var(--muted)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-all duration-150"
             >
-              <span>{item.icon}</span>
-              <span>{item.label}</span>
+              {item.label}
             </Link>
           ))}
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="mt-12">
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-6">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-4">
+      {/* ── FAQ ── */}
+      <section className="mt-24 sm:mt-28">
+        <p className="text-[var(--muted)] text-xs tracking-[0.3em] uppercase mb-8">
+          Questions
+        </p>
+        <div className="divide-y divide-[var(--border)]">
           {[
             {
               q: 'How do I calculate my exact age?',
-              a: 'Enter your birthdate above. The calculator instantly shows your exact age in years, months, days, hours, minutes, and seconds — updating live every second.',
+              a: 'Enter your date of birth in the three fields above. The calculator instantly computes your age in years, months, days, hours, minutes, and seconds — updating every second.',
             },
             {
               q: 'How many days old am I?',
-              a: 'Your total days alive are displayed in the stats grid after you enter your birthdate. A 30-year-old is roughly 10,957 days old; a 25-year-old approximately 9,131 days old.',
+              a: 'Your total days alive are listed in the stats table after you enter your birthdate. A 30-year-old is roughly 10,957 days old; a 25-year-old approximately 9,131 days old.',
             },
             {
               q: 'How accurate is this calculator?',
               a: 'Accurate to the second. It uses the millisecond difference between midnight on your birth date and the current moment, handling leap years and varying month lengths automatically.',
             },
             {
-              q: 'Is my birthdate stored or saved anywhere?',
-              a: 'No. All calculations happen entirely in your browser. Your birthdate never leaves your device and is never sent to any server.',
+              q: 'Is my birthdate stored anywhere?',
+              a: 'No. All calculations run entirely in your browser. Your birthdate never leaves your device and is never sent to any server.',
             },
             {
               q: 'How is the heartbeat count estimated?',
-              a: 'It uses an average resting heart rate of 70 beats per minute — the commonly cited average for healthy adults. Treat it as a fascinating estimate rather than a precise medical figure.',
+              a: 'Using an average resting heart rate of 70 beats per minute — the commonly cited average for healthy adults. Treat it as a fascinating estimate rather than a medical figure.',
             },
             {
-              q: 'What does the life expectancy progress bar show?',
-              a: 'It shows what percentage of the average life expectancy for your selected country you have already lived. Select your country from the dropdown to activate it. Data from WHO statistics.',
+              q: 'What does the life expectancy progress show?',
+              a: 'It shows what percentage of the average life expectancy for your selected country you have already lived. Choose your country from the dropdown. Data from WHO life expectancy statistics.',
             },
           ].map((faq) => (
-            <details key={faq.q} className="group border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-              <summary className="flex items-center justify-between p-4 cursor-pointer font-medium text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors list-none">
+            <details key={faq.q} className="group py-1">
+              <summary className="flex items-center justify-between py-4 cursor-pointer text-[var(--text)] text-sm font-medium hover:text-[var(--gold)] transition-colors duration-200 list-none">
                 {faq.q}
-                <svg className="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                <svg
+                  className="w-4 h-4 text-[var(--muted)] group-open:rotate-180 transition-transform flex-shrink-0 ml-4"
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-              <div className="px-4 pb-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="pb-5 text-sm text-[var(--muted)] leading-relaxed max-w-2xl">
                 {faq.a}
-              </div>
+              </p>
             </details>
           ))}
         </div>
       </section>
 
-      {/* From the Blog */}
-      <section className="mt-12">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">From the Blog</h2>
-          <Link href="/blog" className="text-sm font-medium text-indigo-500 hover:text-indigo-600 transition-colors">
-            View all →
+      {/* ── From the Blog ── */}
+      <section className="mt-24 sm:mt-28">
+        <div className="flex items-baseline justify-between mb-8">
+          <p className="text-[var(--muted)] text-xs tracking-[0.3em] uppercase">From the blog</p>
+          <Link href="/blog" className="text-xs tracking-widest uppercase text-[var(--muted)] hover:text-[var(--gold)] transition-colors duration-200">
+            All articles →
           </Link>
         </div>
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-2 gap-px border border-[var(--border)]" style={{ background: 'var(--border)' }}>
           {[
-            { href: '/blog/what-generation-am-i', title: 'What Generation Am I?', desc: 'Gen Z, Millennial, Gen X, Boomer — find your generation with exact year ranges.' },
-            { href: '/blog/milestone-birthdays', title: 'Milestone Birthdays: 30, 40, 50, 60 & 70', desc: 'What the science actually says about every major milestone birthday.' },
-            { href: '/blog/life-expectancy-by-country', title: 'Life Expectancy by Country 2025', desc: 'Full global rankings and the five factors that drive the differences.' },
-            { href: '/blog/heartbeats-in-a-lifetime', title: 'Heartbeats in a Lifetime', desc: 'The average human heart beats 2.5 billion times. Here is what drives that number.' },
+            { href: '/blog/zodiac-sign-by-birthday', title: 'Zodiac Sign by Birthday', desc: 'Every sign, every date. The full guide to Western astrology.' },
+            { href: '/blog/birth-month-personality', title: 'What Your Birth Month Says About You', desc: 'The science behind birth month effects on personality and health.' },
+            { href: '/blog/life-expectancy-by-country', title: 'Life Expectancy by Country', desc: 'Full global rankings and the five factors that drive the differences.' },
+            { href: '/blog/milestone-birthdays', title: 'Milestone Birthdays: 30, 40, 50, 60', desc: 'What the science actually says about every major milestone birthday.' },
           ].map((post) => (
             <Link
               key={post.href}
               href={post.href}
-              className="group p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-indigo-300 dark:hover:border-indigo-700 hover:shadow-sm transition-all"
+              className="group bg-[var(--bg)] px-5 py-5 hover:bg-[var(--surface)] transition-colors duration-150"
             >
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors text-sm">
+              <h3 className="text-sm font-medium text-[var(--text)] mb-1.5 group-hover:text-[var(--gold)] transition-colors duration-200">
                 {post.title}
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">{post.desc}</p>
+              <p className="text-xs text-[var(--muted)] leading-relaxed">{post.desc}</p>
             </Link>
           ))}
         </div>

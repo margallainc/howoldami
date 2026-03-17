@@ -1,10 +1,22 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { DM_Serif_Display, DM_Sans } from 'next/font/google';
 import './globals.css';
 import DarkModeToggle from './components/DarkModeToggle';
 import Link from 'next/link';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap' });
+const dmSerifDisplay = DM_Serif_Display({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://secondsalive.com'),
@@ -42,10 +54,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${dmSerifDisplay.variable} ${dmSans.variable} dark`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3426561171885671"crossOrigin="anonymous"></script>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3426561171885671"
+          crossOrigin="anonymous"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -63,105 +83,51 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${inter.className} bg-white dark:bg-slate-950 text-slate-900 dark:text-white min-h-screen transition-colors duration-300`}
-      >
-        <header className="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <body className="min-h-screen transition-colors duration-300">
+        {/* ── Navigation ── */}
+        <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-md">
+          <div className="max-w-5xl mx-auto px-6 sm:px-8 h-14 flex items-center justify-between">
+            {/* Wordmark */}
             <Link
               href="/"
-              className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors"
+              className="text-[var(--text)] text-sm font-medium tracking-[0.15em] uppercase hover:text-[var(--gold)] transition-colors duration-200"
             >
-              <svg
-                className="w-7 h-7 text-indigo-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              How Old Am I?
+              Seconds Alive
             </Link>
-            <div className="flex items-center gap-4">
+
+            {/* Nav links */}
+            <nav className="flex items-center gap-6 sm:gap-8">
               <Link
                 href="/blog"
-                className="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors hidden sm:block"
+                className="hidden sm:block text-xs tracking-widest uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors duration-200"
               >
                 Blog
               </Link>
               <Link
                 href="/about"
-                className="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors hidden sm:block"
+                className="hidden sm:block text-xs tracking-widest uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors duration-200"
               >
                 About
               </Link>
               <DarkModeToggle />
-            </div>
+            </nav>
           </div>
         </header>
 
-        <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        {/* ── Main content ── */}
+        <main className="max-w-5xl mx-auto px-6 sm:px-8 py-12 sm:py-16">
           {children}
         </main>
 
-        <footer className="border-t border-slate-200 dark:border-slate-800 mt-16">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-8">
-              <div>
-                <h4 className="font-semibold text-sm text-slate-900 dark:text-white mb-3">
-                  Age Calculators
-                </h4>
-                <ul className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                  <li><Link href="/days-old-calculator" className="hover:text-indigo-500 transition-colors">Days Old Calculator</Link></li>
-                  <li><Link href="/hours-old-calculator" className="hover:text-indigo-500 transition-colors">Hours Old Calculator</Link></li>
-                  <li><Link href="/seconds-old-calculator" className="hover:text-indigo-500 transition-colors">Seconds Old Calculator</Link></li>
-                  <li><Link href="/weeks-old-calculator" className="hover:text-indigo-500 transition-colors">Weeks Old Calculator</Link></li>
-                  <li><Link href="/age-in-days" className="hover:text-indigo-500 transition-colors">Age in Days</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-sm text-slate-900 dark:text-white mb-3">
-                  Life Stats
-                </h4>
-                <ul className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                  <li><Link href="/heartbeats-since-birth" className="hover:text-indigo-500 transition-colors">Heartbeats Since Birth</Link></li>
-                  <li><Link href="/what-day-was-i-born" className="hover:text-indigo-500 transition-colors">What Day Was I Born?</Link></li>
-                  <li><Link href="/next-birthday-countdown" className="hover:text-indigo-500 transition-colors">Birthday Countdown</Link></li>
-                  <li><Link href="/life-expectancy-calculator" className="hover:text-indigo-500 transition-colors">Life Expectancy</Link></li>
-                </ul>
-              </div>
-              <div className="col-span-2 sm:col-span-1">
-                <h4 className="font-semibold text-sm text-slate-900 dark:text-white mb-3">
-                  Blog
-                </h4>
-                <ul className="space-y-2 text-sm text-slate-500 dark:text-slate-400">
-                  <li><Link href="/blog/what-generation-am-i" className="hover:text-indigo-500 transition-colors">What Generation Am I?</Link></li>
-                  <li><Link href="/blog/life-expectancy-by-country" className="hover:text-indigo-500 transition-colors">Life Expectancy by Country</Link></li>
-                  <li><Link href="/blog/milestone-birthdays" className="hover:text-indigo-500 transition-colors">Milestone Birthdays</Link></li>
-                  <li><Link href="/blog/birthday-facts-and-statistics" className="hover:text-indigo-500 transition-colors">Birthday Facts & Statistics</Link></li>
-                  <li><Link href="/blog" className="hover:text-indigo-500 transition-colors font-medium">View All Articles →</Link></li>
-                </ul>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 mb-8">
-              <div className="col-span-2 sm:col-span-3">
-                <h4 className="font-semibold text-sm text-slate-900 dark:text-white mb-3">
-                  Company
-                </h4>
-                <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-500 dark:text-slate-400">
-                  <li><Link href="/about" className="hover:text-indigo-500 transition-colors">How It Works</Link></li>
-                  <li><Link href="/privacy-policy" className="hover:text-indigo-500 transition-colors">Privacy Policy</Link></li>
-                  <li><Link href="/terms-of-service" className="hover:text-indigo-500 transition-colors">Terms of Service</Link></li>
-                </ul>
-              </div>
-            </div>
-            <div className="border-t border-slate-200 dark:border-slate-800 pt-6 text-center text-sm text-slate-400 dark:text-slate-500">
-              <p>&copy; 2025 How Old Am I? — All calculations are performed client-side. No data is stored.</p>
+        {/* ── Footer ── */}
+        <footer className="border-t border-[var(--border)] mt-24">
+          <div className="max-w-5xl mx-auto px-6 sm:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[var(--muted)] text-xs tracking-wide">
+            <span>© 2025 Seconds Alive — all calculations run in your browser, nothing is stored</span>
+            <div className="flex items-center gap-5">
+              <Link href="/blog" className="hover:text-[var(--text)] transition-colors">Blog</Link>
+              <Link href="/about" className="hover:text-[var(--text)] transition-colors">About</Link>
+              <Link href="/privacy-policy" className="hover:text-[var(--text)] transition-colors">Privacy</Link>
+              <Link href="/terms-of-service" className="hover:text-[var(--text)] transition-colors">Terms</Link>
             </div>
           </div>
         </footer>

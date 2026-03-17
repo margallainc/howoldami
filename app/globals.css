@@ -2,29 +2,173 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────
+   Design tokens — light (warm ivory) + dark (luxury black)
+───────────────────────────────────────────────── */
+:root {
+  --bg: #f9f6f1;
+  --surface: #f2ede5;
+  --surface2: #ece6dc;
+  --border: #ddd7cc;
+  --text: #1a1714;
+  --muted: #7d7670;
+  --dim: #bab4ac;
+  --gold: #9e7030;
+  --gold-dim: #c4943c;
+}
+
+.dark {
+  --bg: #0d0d0d;
+  --surface: #111111;
+  --surface2: #181818;
+  --border: #1f1f1f;
+  --text: #ede8df;
+  --muted: #5c5752;
+  --dim: #2e2c28;
+  --gold: #c9a96e;
+  --gold-dim: #8a7248;
+}
+
+/* ─────────────────────────────────────────────────
+   Base
+───────────────────────────────────────────────── */
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bg);
+  color-scheme: light;
 }
 
-/* Ensure monospace/tabular figures for counters */
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─────────────────────────────────────────────────
+   Typography utilities
+───────────────────────────────────────────────── */
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Date input styling for dark mode */
+.font-display {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+/* ─────────────────────────────────────────────────
+   Input resets
+───────────────────────────────────────────────── */
+
+/* Remove date picker icon */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5);
+  display: none;
 }
 
-.dark input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.8);
+/* Remove number spinners */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
-/* Smooth transitions for theme switching */
-html.dark {
-  color-scheme: dark;
+/* Underline date fields — the luxury input style */
+.date-field {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 300;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+  padding: 0.25rem 0;
+  width: 100%;
+  caret-color: var(--gold);
+}
+
+.date-field::placeholder {
+  color: var(--dim);
+}
+
+.date-field:focus {
+  border-color: var(--gold);
+}
+
+/* ─────────────────────────────────────────────────
+   Selection
+───────────────────────────────────────────────── */
+::selection {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* ─────────────────────────────────────────────────
+   Thin rule utility
+───────────────────────────────────────────────── */
+.rule {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ─────────────────────────────────────────────────
+   Select styling
+───────────────────────────────────────────────── */
+.luxury-select {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  outline: none;
+  padding: 0.25rem 1.5rem 0.25rem 0;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235c5752' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+}
+
+.luxury-select:focus {
+  border-color: var(--gold);
+}
+
+/* Dark mode adjustments for select arrow */
+.dark .luxury-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235c5752' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+/* ─────────────────────────────────────────────────
+   Count-up animation
+───────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.4s ease forwards;
 }
