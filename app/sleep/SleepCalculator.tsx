@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+
 type Mode = 'wakeup' | 'bedtime';
 
 interface CycleResult {

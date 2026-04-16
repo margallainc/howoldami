@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import SleepCalculator from './SleepCalculator';
 
+
 export const metadata: Metadata = {
   title: 'Sleep Cycle Calculator — Seconds Alive',
   description:
