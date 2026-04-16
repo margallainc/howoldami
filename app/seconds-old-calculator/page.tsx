@@ -127,7 +127,7 @@ export default function SecondsOldCalculator() {
           The second was originally defined as 1/86,400 of a mean solar day (one day has 24 hours × 60 minutes × 60 seconds = 86,400 seconds). Since 1967, the International System of Units has defined one second as exactly 9,192,631,770 oscillations of the radiation emitted by a caesium-133 atom. This atomic definition is stable to within one second per 300 million years — far more precise than any astronomical measurement.
         </p>
         <p>
-          In everyday perception, a second is roughly the duration of a heartbeat, the time it takes to say "one elephant," and the shortest interval most people can estimate with accuracy using only their sense of time. Experiments in time perception show that emotional states dramatically affect our subjective experience of the second: fear slows it, boredom stretches it, and flow states compress it to near-nothing.
+          In everyday perception, a second is roughly the duration of a heartbeat, the time it takes to say &ldquo;one elephant,&rdquo; and the shortest interval most people can estimate with accuracy using only their sense of time. Experiments in time perception show that emotional states dramatically affect our subjective experience of the second: fear slows it, boredom stretches it, and flow states compress it to near-nothing.
         </p>
       </section>
 
