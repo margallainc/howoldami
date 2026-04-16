@@ -109,6 +109,12 @@ export default function RootLayout({
               >
                 About
               </Link>
+              <Link
+                href="/sleep"
+                className="hidden sm:block text-xs tracking-widest uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors duration-200"
+              >
+                Sleep
+              </Link>
               <DarkModeToggle />
             </nav>
           </div>
