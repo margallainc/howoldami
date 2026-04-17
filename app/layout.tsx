@@ -21,23 +21,23 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://secondsalive.com'),
   title: {
-    default: 'How Old Am I? — Exact Age Calculator with Live Life Stats',
-    template: '%s | How Old Am I?',
+    default: 'Seconds Alive — How Old Am I? Exact Age Calculator',
+    template: '%s | Seconds Alive',
   },
   description:
     'Find out exactly how old you are in years, months, days, hours, minutes and seconds. See your life stats: heartbeats, breaths, and more — all counting live.',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'How Old Am I?',
-    title: 'How Old Am I? — Exact Age Calculator with Live Life Stats',
+    siteName: 'Seconds Alive',
+    title: 'Seconds Alive — How Old Am I? Exact Age Calculator',
     description:
       'Find out exactly how old you are in years, months, days, hours, minutes and seconds. See your life stats: heartbeats, breaths, and more — all counting live.',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'How Old Am I? — Exact Age Calculator with Live Life Stats',
+    title: 'Seconds Alive — How Old Am I? Exact Age Calculator',
     description:
       'Find out exactly how old you are in years, months, days, hours, minutes and seconds. See your life stats counting live.',
     images: ['/og-image.png'],
