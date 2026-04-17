@@ -61,6 +61,8 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d0d0d" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9f6f1" />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3426561171885671"
